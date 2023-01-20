@@ -227,13 +227,6 @@
 
   
   <url>
-    <loc>https://bohe-mian.com/tags/baopo/</loc>
-    <lastmod>2023-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://bohe-mian.com/tags/ctf/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -242,13 +235,6 @@
   
   <url>
     <loc>https://bohe-mian.com/tags/web/</loc>
-    <lastmod>2023-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohe-mian.com/tags/misc/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -270,6 +256,20 @@
   
   <url>
     <loc>https://bohe-mian.com/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</loc>
+    <lastmod>2023-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohe-mian.com/tags/baopo/</loc>
+    <lastmod>2023-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohe-mian.com/tags/misc/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -304,13 +304,6 @@
   </url>
   
   <url>
-    <loc>https://bohe-mian.com/tags/crypto/</loc>
-    <lastmod>2023-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://bohe-mian.com/tags/%E5%8F%96%E8%AF%81/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -319,6 +312,13 @@
   
   <url>
     <loc>https://bohe-mian.com/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2023-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohe-mian.com/tags/crypto/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
