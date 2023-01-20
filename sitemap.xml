@@ -227,6 +227,13 @@
 
   
   <url>
+    <loc>https://bohe-mian.com/tags/baopo/</loc>
+    <lastmod>2023-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bohe-mian.com/tags/ctf/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -241,14 +248,14 @@
   </url>
   
   <url>
-    <loc>https://bohe-mian.com/tags/%E5%BC%BA%E7%BD%91%E6%9D%AF/</loc>
+    <loc>https://bohe-mian.com/tags/misc/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bohe-mian.com/tags/%E5%B8%82%E8%B5%9B/</loc>
+    <loc>https://bohe-mian.com/tags/%E5%BC%BA%E7%BD%91%E6%9D%AF/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -269,14 +276,14 @@
   </url>
   
   <url>
-    <loc>https://bohe-mian.com/tags/misc/</loc>
+    <loc>https://bohe-mian.com/tags/hws2022/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bohe-mian.com/tags/hws2022/</loc>
+    <loc>https://bohe-mian.com/tags/%E5%B8%82%E8%B5%9B/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -291,13 +298,6 @@
   
   <url>
     <loc>https://bohe-mian.com/tags/phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%8Crce/</loc>
-    <lastmod>2023-01-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohe-mian.com/tags/baopo/</loc>
     <lastmod>2023-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
