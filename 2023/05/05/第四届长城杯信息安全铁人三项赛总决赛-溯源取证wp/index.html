@@ -214,12 +214,12 @@ gtag('config', 'G-3Z9EQ7RWNS');
 <p>flag admin/p455w0rd</p>
 <h4 id="5黑客添加的email地址为多少"><a href="#5黑客添加的email地址为多少" class="headerlink" title="5黑客添加的email地址为多少"></a>5黑客添加的email地址为多少</h4><p>一般来说，email地址一般都有关键字为mail，然后添加地址肯定是黑客所为，这里他的user-agent我们可以从上面知道”Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0”，我们匹配这个之后在匹配一下mail<code> cat access_log-20230426 | grep &quot;Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0&quot; | grep &quot;mail&quot;</code></p>
 <p><img src="/images/tiesan/image-20230505145108428.png" alt="image-20230505145108428"></p>
-<p>仔细看，这里有一个可疑邮箱，为<a href="mailto:&#97;&#100;&#x6d;&#105;&#x6e;&#x40;&#x7a;&#x7a;&#x2e;&#x63;&#x6f;&#x6d;">&#97;&#100;&#x6d;&#105;&#x6e;&#x40;&#x7a;&#x7a;&#x2e;&#x63;&#x6f;&#x6d;</a>，可以提交试试，这里再仔细分析，去搜索这个邮箱</p>
+<p>仔细看，这里有一个可疑邮箱，为<a href="mailto:&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#122;&#122;&#46;&#x63;&#111;&#109;">&#x61;&#x64;&#109;&#x69;&#x6e;&#64;&#122;&#122;&#46;&#x63;&#111;&#109;</a>，可以提交试试，这里再仔细分析，去搜索这个邮箱</p>
 <p><img src="/images/tiesan/image-20230505145238135.png" alt="image-20230505145238135"></p>
 <p>这里因为在web页面@会url编码，我们就直接搜zz.com一样的，发现三个，</p>
 <p><img src="/images/tiesan/image-20230505145615436.png" alt="image-20230505145615436"></p>
 <p>其中在包含2495280这一行的这个数据包为POST传参，所以判定为添加的email</p>
-<p>flag <a href="mailto:&#x61;&#x64;&#109;&#105;&#110;&#64;&#122;&#122;&#x2e;&#x63;&#111;&#109;">&#x61;&#x64;&#109;&#105;&#110;&#64;&#122;&#122;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>flag <a href="mailto:&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x7a;&#122;&#46;&#x63;&#x6f;&#x6d;">&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x7a;&#122;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <h4 id="6黑客第一次上传木马的绝对路径为多少，该木马未被使用"><a href="#6黑客第一次上传木马的绝对路径为多少，该木马未被使用" class="headerlink" title="6黑客第一次上传木马的绝对路径为多少，该木马未被使用"></a>6黑客第一次上传木马的绝对路径为多少，该木马未被使用</h4><p><code>cat access_log-20230426 | grep &quot;Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0&quot;</code></p>
 <p>继续使用这个命令去看黑客的操作，在最后面可以看到</p>
 <p><img src="/images/tiesan/image-20230505150207488.png" alt="image-20230505150207488"></p>
@@ -337,4 +337,25 @@ if ('Valine' === 'Valine' || !true) {
   function loadOtherComment () {
     loadValine()
   }
-}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://calendar.happyking.top/api?Bohemiana";
+            var git_color =['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620'];
+            var git_user ="Bohemiana";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><!-- hexo injector body_end end --></body></html>
